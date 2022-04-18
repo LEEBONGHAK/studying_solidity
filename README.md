@@ -1,1 +1,1 @@
-# studing_solidity
+# studying_solidity
