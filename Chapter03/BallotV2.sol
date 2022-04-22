@@ -37,7 +37,7 @@ contract BallotV2
     constructor (uint numProposals)
     {
         chairperson = msg.sender;
-        voters[chairperson].weight = 2;
+        voters[chairperson].weight = 2; // 테스트를 위해 가중치를 2로 설정
 
         // 제안 개수는 constructor의 파라미터
         for (uint prop = 0; prop < numProposals; prop++)
