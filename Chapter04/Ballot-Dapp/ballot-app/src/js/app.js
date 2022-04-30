@@ -2,10 +2,13 @@ App = {
   web3Provider: null,
   contracts: {},
   names: new Array(),
-  url: 'http://127.0.0.1:7545',
+
+  url: 'http://127.0.0.1:7545', // web3 프로바이더 URL: IP 주소와 RPC 포트
+
   chairPerson:null,
   currentAccount:null,
-  init: function() {
+
+  init: function() {  // web3 프로바이더와 스마트 컨트랙트를 설정
     $.getJSON('../proposals.json', function(data) {
       var proposalsRow = $('#proposalsRow');
       var proposalTemplate = $('#proposalTemplate');
@@ -38,7 +41,7 @@ App = {
     return App.initContract();
   },
 
-  initContract: function() {
+  initContract: function() {  // 컨트랙트 개체 생성
       $.getJSON('Ballot.json', function(data) {
     // Get the necessary contract artifact file and instantiate it with truffle-contract
     var voteArtifact = data;
@@ -52,13 +55,13 @@ App = {
   });
   },
 
-  bindEvents: function() {
+  bindEvents: function() {  // UI 버튼을 스마트 컨트랙트 함수에 바인딩하는 핸들러
     $(document).on('click', '.btn-vote', App.handleVote);
     $(document).on('click', '#win-count', App.handleWinner);
     $(document).on('click', '#register', function(){ var ad = $('#enter_address').val(); App.handleRegister(ad); });
   },
 
-  populateAddress : function(){
+  populateAddress : function(){ // 드롭다운 주소 리스트와 의장 정보를 위한 함수
     new Web3(new Web3.providers.HttpProvider(App.url)).eth.getAccounts((err, accounts) => {
       jQuery.each(accounts,function(i){
         if(web3.eth.coinbase != accounts[i]){
@@ -69,7 +72,7 @@ App = {
     });
   },
 
-  getChairperson : function(){
+  getChairperson : function(){ // 드롭다운 주소 리스트와 의장 정보를 위한 함수
     App.contracts.vote.deployed().then(function(instance) {
       return instance;
     }).then(function(result) {
@@ -85,7 +88,7 @@ App = {
     })
   },
 
-  handleRegister: function(addr){
+  handleRegister: function(addr){ // 프런트엔드 버튼을 스마트 컨트랙트로 연결하는 핸들러 코드
 
     var voteInstance;
     App.contracts.vote.deployed().then(function(instance) {
@@ -103,7 +106,7 @@ App = {
     });
 },
 
-  handleVote: function(event) {
+  handleVote: function(event) { // 프런트엔드 버튼을 스마트 컨트랙트로 연결하는 핸들러 코드
     event.preventDefault();
     var proposalId = parseInt($(event.target).data('id'));
     var voteInstance;
@@ -129,7 +132,7 @@ App = {
     });
   },
 
-  handleWinner : function() {
+  handleWinner : function() { // 프런트엔드 버튼을 스마트 컨트랙트로 연결하는 핸들러 코드
     console.log("To get winner");
     var voteInstance;
     App.contracts.vote.deployed().then(function(instance) {
