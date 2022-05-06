@@ -2,13 +2,10 @@ App = {
   web3Provider: null,
   contracts: {},
   names: new Array(),
-
-  url: 'http://127.0.0.1:7545', // web3 프로바이더 URL: IP 주소와 RPC 포트
-
+  url: 'http://127.0.0.1:7545',
   chairPerson:null,
   currentAccount:null,
-
-  init: function() {  // web3 프로바이더와 스마트 컨트랙트를 설정
+  init: function() {
     $.getJSON('../proposals.json', function(data) {
       var proposalsRow = $('#proposalsRow');
       var proposalTemplate = $('#proposalTemplate');
@@ -41,10 +38,11 @@ App = {
     return App.initContract();
   },
 
-  initContract: function() {  // 컨트랙트 개체 생성
+  initContract: function() {
       $.getJSON('Ballot.json', function(data) {
     // Get the necessary contract artifact file and instantiate it with truffle-contract
     var voteArtifact = data;
+    console.log(voteArtifact);
     App.contracts.vote = TruffleContract(voteArtifact);
 
     // Set the provider for our contract
@@ -55,13 +53,17 @@ App = {
   });
   },
 
-  bindEvents: function() {  // UI 버튼을 스마트 컨트랙트 함수에 바인딩하는 핸들러
+  bindEvents: function() {
     $(document).on('click', '.btn-vote', App.handleVote);
     $(document).on('click', '#win-count', App.handleWinner);
-    $(document).on('click', '#register', function(){ var ad = $('#enter_address').val(); App.handleRegister(ad); });
+    $(document).on('click', '#register', function(){
+      var ad = $('#enter_address').val();
+      console.log('event occur', ad);
+      App.handleRegister(ad);
+    });
   },
 
-  populateAddress : function(){ // 드롭다운 주소 리스트와 의장 정보를 위한 함수
+  populateAddress : function(){
     new Web3(new Web3.providers.HttpProvider(App.url)).eth.getAccounts((err, accounts) => {
       jQuery.each(accounts,function(i){
         if(web3.eth.coinbase != accounts[i]){
@@ -72,11 +74,13 @@ App = {
     });
   },
 
-  getChairperson : function(){ // 드롭다운 주소 리스트와 의장 정보를 위한 함수
-    App.contracts.vote.deployed().then(function(instance) {
+  getChairperson : function(){
+    App.contracts.vote.deployed()
+    .then(function(instance) {
       return instance;
     }).then(function(result) {
       App.chairPerson = result.constructor.currentProvider.selectedAddress.toString();
+      console.log(App.chairPerson);
       App.currentAccount = web3.eth.coinbase;
       if(App.chairPerson != App.currentAccount){
         jQuery('#address_div').css('display','none');
@@ -88,32 +92,42 @@ App = {
     })
   },
 
-  handleRegister: function(addr){ // 프런트엔드 버튼을 스마트 컨트랙트로 연결하는 핸들러 코드
+  handleRegister: function(addr){
 
     var voteInstance;
-    App.contracts.vote.deployed().then(function(instance) {
-      voteInstance = instance;
-      return voteInstance.register(addr);
-    }).then(function(result, err){
+    console.log(addr);
+    web3.eth.getAccounts(function(error, accounts) {
+      var account = accounts[0];
+      App.contracts.vote.deployed()
+      .then(function(instance) {
+        console.log(instance);
+        voteInstance = instance;
+        console.log(voteInstance.register);
+        console.log(account);
+        return voteInstance.register(addr, {from : account});
+      })
+      .then(function(result, err){
+        console.log(err);
         if(result){
             if(parseInt(result.receipt.status) == 1)
-            alert(addr + " registration done successfully")
+              alert(addr + " registration done successfully")
             else
-            alert(addr + " registration not done successfully due to revert")
+              alert(addr + " registration not done successfully due to revert")
         } else {
-            alert(addr + " registration failed")
+          alert(addr + " registration failed")
         }   
+      });
     });
-},
+  },
 
-  handleVote: function(event) { // 프런트엔드 버튼을 스마트 컨트랙트로 연결하는 핸들러 코드
+  handleVote: function(event) {
     event.preventDefault();
     var proposalId = parseInt($(event.target).data('id'));
     var voteInstance;
 
     web3.eth.getAccounts(function(error, accounts) {
       var account = accounts[0];
-
+      console.log(account);
       App.contracts.vote.deployed().then(function(instance) {
         voteInstance = instance;
 
@@ -132,7 +146,7 @@ App = {
     });
   },
 
-  handleWinner : function() { // 프런트엔드 버튼을 스마트 컨트랙트로 연결하는 핸들러 코드
+  handleWinner : function() {
     console.log("To get winner");
     var voteInstance;
     App.contracts.vote.deployed().then(function(instance) {

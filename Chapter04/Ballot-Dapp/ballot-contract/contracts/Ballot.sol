@@ -1,62 +1,67 @@
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity ^0.8.13;
+
+// import "hardhat/console.sol";
 
 contract Ballot {
-    struct Voter {
-        uint256 weight;
+
+    struct Voter {                     
+        uint weight;
         bool voted;
-        uint256 vote;
+        uint vote;
+    }
+    struct Proposal {                  
+        uint voteCount;
     }
 
-    struct Proposal {
-        uint256 voteCount;
-    }
+    bool public test;
 
     address chairperson;
     mapping(address => Voter) voters;
     Proposal[] proposals;
 
-    modifier onlyChair() {
-        require(msg.sender == chairperson);
+    //modifiers
+    modifier onlyChair() 
+    {
+        require(msg.sender == chairperson, "You are not chairperson");
         _;
     }
-
-    modifier validVoter() {
+    
+    modifier validVoter()
+    {
         require(voters[msg.sender].weight > 0, "Not a Registered Voter");
         _;
     }
 
-    constructor(uint256 numProposals) {
+    constructor (uint numProposals) {
         chairperson = msg.sender;
-        voters[chairperson].weight = 2;
-        for (uint256 prop = 0; prop < numProposals; prop++)
+        voters[chairperson].weight = 2; // weight 2 for testing purposes
+        //proposals.length = numProposals; -- before 0.6.0
+        for (uint prop = 0; prop < numProposals; prop ++)
             proposals.push(Proposal(0));
+        
     }
-
-    function register(address voter) public onlyChair {
-        require(!voters[voter].voted);
+    
+    function register(address voter) public onlyChair{
         voters[voter].weight = 1;
         voters[voter].voted = false;
     }
 
-    function vote(uint256 toProposal) public validVoter {
+    function vote(uint toProposal) public validVoter{
         Voter memory sender = voters[msg.sender];
-
-        require(!sender.voted);
-        require(toProposal < proposals.length);
-
-        sender.voted = true;
+        require(sender.voted == false, "You already voted");
+        require (toProposal < proposals.length, "Undefined Proposal");
+        voters[msg.sender].voted = true;
+        voters[msg.sender].vote = toProposal;
         proposals[toProposal].voteCount += sender.weight;
     }
 
-    function reqWinner() public view returns (uint256 winningProposal) {
-        uint256 winningVoteCount = 0;
-        for (uint256 prop = 0; prop < proposals.length; prop++) {
+    function reqWinner() public view returns (uint winningProposal) {
+        uint winningVoteCount = 0;
+        for (uint prop = 0; prop < proposals.length; prop++) 
             if (proposals[prop].voteCount > winningVoteCount) {
                 winningVoteCount = proposals[prop].voteCount;
                 winningProposal = prop;
             }
-        }
-        assert(winningVoteCount >= 3);
+        assert(winningVoteCount>=3);
     }
 }
