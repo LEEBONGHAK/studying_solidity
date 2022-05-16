@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIRLINE CONSORTIUM ASK App</title>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/toastr.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/flat-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h1 class="section-title">Available seats</h1>
+          <div class="todo">
+            <ul class="list" id="flights">
+              <li>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    <strong
+                      ><span>FID</span><span>Airline</span> <span>From</span
+                      ><span>To</span>
+                      <span class="depTime">DepTime</span>
+                      <span style="font-weight: 700;">AvailSeats</span></strong
+                    >
+                  </h4>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <p><strong>For testing purposes only:</strong></p>
+          <p>Chair: <span id="acc1addr"></span></p>
+          <p>Account 2: <span id="acc2addr"></span></p>
+          <p>Account 3: <span id="acc3addr"></span></p>
+        </div>
+        <div class="col-lg-8">
+          <h1 class="section-title">Airline consortium ASK</h1>
+          <div class="todo functions">
+            <div class="todo-search">
+              <p>Registration</p>
+            </div>
+            <ul class="list">
+              <li class="">
+                <!--todo-done-->
+                <div class="todo-icon fa fa-plane"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    <strong>Airlines registration</strong>
+                  </h4>
+                  <button id="airlineRegister" class="btn btn-info">
+                    <i
+                      class="fa fa-plane"
+                      style="font-size: 17px; margin-right: 5px;"
+                    ></i>
+                    Register
+                  </button>
+                  <div
+                    class="form-group d-inline"
+                    style="float: right; margin-right: 20px;"
+                  >
+                    <input
+                      type="text"
+                      class="form-control d-inline"
+                      placeholder="Enter deposit amount"
+                      id="airlineRegDeposit"
+                      style="margin-right: 5px;"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="">
+                <div class="todo-icon fui-user"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    <strong>Chairperson can unregister</strong>
+                  </h4>
+                  <button id="airlineUnRegister" class="btn btn-info">
+                    <i
+                      class="fui-user"
+                      style="font-size: 17px; margin-right: 5px;"
+                    ></i>
+                    Unregister
+                  </button>
+                  <div
+                    class="form-group d-inline"
+                    style="float: right; margin-right: 20px;"
+                  >
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter airline address"
+                      id="airlineUnRegAddress"
+                      style="margin-right: 5px;"
+                    />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="todo functions">
+            <div class="todo-search">
+              <p>Change seats record</p>
+            </div>
+            <ul class="list">
+              <li class="">
+                <div class="todo-icon fa fa-share"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    <strong>Request</strong>
+                  </h4>
+                  <button id="airlineRequest" class="btn btn-info">
+                    ASK request
+                  </button>
+                  <div style="float: right; margin-right: 20px;">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control d-inline"
+                        placeholder="Enter request ID"
+                        id="askReqReqId"
+                        style="margin-right: 5px;"
+                      />
+                      <input
+                        type="text"
+                        class="form-control d-inline"
+                        placeholder="Enter flight ID"
+                        id="askReqFlightId"
+                        style="margin-right: 5px;"
+                      />
+                      <input
+                        type="text"
+                        class="form-control d-inline"
+                        placeholder="Enter passenger ID"
+                        id="askReqPsngrId"
+                        style="margin-right: 5px;"
+                      />
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                      <input
+                        type="text"
+                        class="form-control d-inline"
+                        placeholder="Number of seats needed"
+                        id="askReqNumSeats"
+                        style="margin-right: 5px;"
+                      />
+                      <input
+                        type="text"
+                        class="form-control d-inline"
+                        placeholder="To airline address"
+                        id="askReqAddress"
+                        style="margin-right: 5px;"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="">
+                <div class="todo-icon fa fa-reply"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    <strong>Response</strong>
+                  </h4>
+                  <button id="airlineResponse" class="btn btn-info">
+                    ASK response
+                  </button>
+                  <div
+                    class="form-group d-inline"
+                    style="float: right; margin-right: 20px;"
+                  >
+                    <input
+                      type="text"
+                      class="form-control d-inline"
+                      placeholder="Enter request ID"
+                      id="askRespReqId"
+                      style="margin-right: 5px;"
+                    />
+                    <input
+                      type="text"
+                      class="form-control d-inline"
+                      placeholder="Is success? (true/false)"
+                      id="askRespFlightId"
+                      style="margin-right: 5px;"
+                    />
+                    <input
+                      type="text"
+                      class="form-control d-inline"
+                      placeholder="From airline address"
+                      id="askRespAddress"
+                      style="margin-right: 5px;"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li class="">
+                <div class="todo-icon fa fa-money"></div>
+                <div class="todo-content">
+                  <h4 class="todo-name">
+                    <strong>Settle</strong>
+                  </h4>
+                  <button id="airlineSettle" class="btn btn-info">
+                    Settle payment
+                  </button>
+                  <div
+                    class="form-group d-inline"
+                    style="float: right; margin-right: 20px;"
+                  >
+                    <input
+                      type="text"
+                      class="form-control d-inline"
+                      placeholder="Enter request ID"
+                      id="spReqId"
+                      style="margin-right: 5px;"
+                    />
+                    <input
+                      type="text"
+                      class="form-control d-inline"
+                      placeholder="Number of seats"
+                      id="spNumSeats"
+                      style="margin-right: 5px;"
+                    />
+                    <input
+                      type="text"
+                      class="form-control d-inline"
+                      placeholder="To airline address"
+                      id="spAddress"
+                      style="margin-right: 5px;"
+                    />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="todo functions">
+            <div
+              class="todo-search"
+              style="border-radius: 6px; padding: 15px 25px;"
+            >
+              <div
+                class="todo-icon fa fa-handshake-o"
+                style="margin-top: 5px;"
+              ></div>
+              <p style="display: inline-block;">Replenish escrow</p>
+              <button
+                id="replenishEscrow"
+                class="btn btn-info"
+                style="margin-top: -4px;"
+              >
+                Replenish
+              </button>
+              <div
+                class="form-group d-inline"
+                style="float: right; margin-right: 20px; margin-top: -4px;"
+              >
+                <input
+                  type="text"
+                  class="form-control d-inline"
+                  placeholder="Enter the amount"
+                  id="replenishAmount"
+                  style="margin-right: 5px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/dist/jquery.min.js"></script>
+    <script
+      src="https://unpkg.com/popper.js@1.14.1/dist/umd/popper.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/dist/bootstrap.min.js"></script>
+    <script src="js/dist/flat-ui.min.js"></script>
+    <script src="js/dist/toastr.min.js"></script>
+    <script src="js/dist/web3.min.js"></script>
+    <script src="js/dist/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

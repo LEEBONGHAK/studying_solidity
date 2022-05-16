@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blind Bidding App</title>
+  <link href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans:400,400italic,300italic,300|Raleway:300,400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/toastr.min.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <div class="content">
+    <div class="container wow fadeInUp delay-03s">
+      <div class="row">      
+        <div class="logo text-center">
+		      <h2>ETH - Blind Auction</h2>
+          <h3>May the highest bidder win!</h3>
+        </div>
+      </div>
+      
+      <div class="text-center" > <p><b>Current account: </b><span id="current_account"></span></p>
+
+      <div class="row text-center" style="padding-top:20px">
+
+        <div class="col-lg-2 col-lg-offset-2 text-center img-chairperson">
+            <img src="img/antiqueTrophy.jpg" class="rounded" height="400px" width="280px">
+        </div>
+        
+        <div class="col-lg-6 col-lg-offset-1 other-user" style="display: none;">
+          <div style="margin-left:40px;">
+            <h2 class="subs-title text-center">Bid on this antique trophy!</h2>
+            <label class="subs-title">
+                <b>Enter blinded bid: </b>&nbsp;
+                  <input type="text" class="bid-input form-control" id="bet-value" placeholder="Enter in bytes"></input>
+                <br/>
+                <br>
+            </label>
+
+            <label class="subs-title">
+                <b>Enter deposit amount: </b>&nbsp;
+                  <input type="text" class="bid-input form-control" id="message-value"></input>
+                <br/>
+            </label>
+
+            <center style="padding-top:25px"><button type="submit" id="submit-bid" class="btn btn-primary btn-action align-center">Bid</button></center>
+            
+            <hr style="width:200px">
+
+            <label class="subs-title">
+                <b>Reveal your bid:</b>&nbsp;
+                  <input type="text" class="bid-input form-control" id="bet-reveal"></input>
+                  &nbsp; <br><br>
+                <b>Enter the OTP:</b>&nbsp;
+                  <input type="text" class="bid-input form-control" id="password"></input>
+                <br/>
+            </label>
+    
+            <div class="row" style="padding-top:20px"> 
+                  <center><button type="submit" id="submit-reveal" class="btn btn-primary btn-action align-center">Reveal</button></center>
+                  <br>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+		<br><hr>
+
+    <div class="row" style="padding-top:20px">
+        <div id="info-section" class="row" style="font-size:20px; text-align:center; display:block">
+            Current phase: <span id="phase-notification-text"></span>
+        </div>
+        <br>
+        <center>
+          <button type="submit" id="change-phase" class="btn btn-primary btn-control align-center chairperson" style="display: none;">Move to next phase</button>&nbsp;&nbsp;
+          <button type="submit" id="withdraw-bid" class="btn btn-primary btn-control align-center other-user" style="display: none;">Withdraw</button>&nbsp;&nbsp;
+          <button type="submit" id="generate-winner" class="btn btn-primary btn-control align-center">Show winning bid</button>&nbsp;&nbsp;
+          <button type="submit" id="close-auction" class="btn btn-primary btn-control align-center chairperson" style="display: none;">Close Auction</button>
+        </center>
+    </div>
+
+    </div>
+      <br><br>
+    </div>
+  </div>
+  
+  <script src="js/dist/jquery.min.js"></script>
+  <script src="js/dist/bootstrap.min.js"></script>
+  <script src="js/dist/jquery.countdown.min.js"></script>
+  <script src="js/dist/wow.js"></script>
+  <script src="js/dist/custom.js"></script>
+  <script src="js/dist/bootstrap.min.js"></script>
+  <script src="js/dist/toastr.min.js"></script>
+  <script src="js/dist/web3.min.js"></script>
+  <script src="js/dist/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

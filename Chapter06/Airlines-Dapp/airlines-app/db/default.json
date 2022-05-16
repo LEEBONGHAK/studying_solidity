@@ -1,0 +1,48 @@
+[{
+    "FlightID" : 1,
+    "Airline" : "AirlineA",
+    "FromCity" : "BUF",
+    "ToCity" : "NYC",
+    "DepTime" : "6:00 AM",
+    "SeatsAvail" : 8
+},
+{
+    "FlightID" : 2,
+    "Airline" : "AirlineA",
+    "FromCity" : "BUF",
+    "ToCity" : "NYC",
+    "DepTime" : "10:00 AM",
+    "SeatsAvail" : 6
+},
+{
+    "FlightID" : 3,
+    "Airline" : "AirlineA",
+    "FromCity" : "BUF",
+    "ToCity" : "NYC",
+    "DepTime" : "6:00 PM",
+    "SeatsAvail" : 7
+},
+{
+    "FlightID" : 4,
+    "Airline" : "AirlineB",
+    "FromCity" : "BUF",
+    "ToCity" : "NYC",
+    "DepTime" : "7:00 AM",
+    "SeatsAvail" : 10
+},
+{
+    "FlightID" : 5,
+    "Airline" : "AirlineB",
+    "FromCity" : "BUF",
+    "ToCity" : "NYC",
+    "DepTime" : "1:00 PM",
+    "SeatsAvail" : 4
+},
+{
+    "FlightID" : 6,
+    "Airline" : "AirlineB",
+    "FromCity" : "BUF",
+    "ToCity" : "NYC",
+    "DepTime" : "5:00 AM",
+    "SeatsAvail" : 2
+}]

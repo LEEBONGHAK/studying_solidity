@@ -1,0 +1,230 @@
+body{
+    background-color: #ebeff2;
+}
+
+body .container{
+    width: 96%;
+}
+
+.form-group.focus .form-control, .form-group.focus .select2-search input[type="text"], .select2-search .form-group.focus input[type="text"], .form-control:focus, .select2-search input[type="text"]:focus {
+    border-color: #3498db;
+}
+
+.section-title{
+    font: 900 32px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.todo-search{
+    background: #fff;
+    color: #34495e;
+}
+
+.todo-search p{
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.todo ul.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border-radius: 0 0 6px 6px;
+}
+
+.todo ul.list>li{
+    background: #34495e;
+    background-size: 20px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.214;
+    margin-top: 2px;
+    padding: 18px 25px 21px 25px;
+    position: relative;
+    transition: .25s;
+}
+
+.todo ul.list>li{
+    color: #34495e;
+    margin-top: 0px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.todo ul.list>li.todo-done:after,.todo li:after,.todo-search::before{
+    content: none;
+}
+
+.todo-icon {
+    padding: 0px 22px 0 0;
+    margin-top: 13px;
+}
+
+h4.todo-name{
+    display: inline-block;
+    margin-top: 13px;
+    margin-bottom: 0px;
+    color: #34495e;
+    font-weight: 500;
+}
+
+.todo-content button, .todo-search button, .todo-content .btn-group{
+    float: right;
+    display: inline-block;
+    margin: 0;
+    width: 150px;
+}
+
+.todo ul.list>li.start-arrow:after{
+    content: "\f175";
+    font-family: 'FontAwesome';
+    text-align: center;
+    font-size: 36px;
+    line-height: 21px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: none;
+    color: #3498db;
+    width: auto;
+    height: auto;
+    left: 2.5%;
+    right: auto;
+    top: 90%;
+    z-index: 99;
+    margin-top: auto;
+}
+
+#toast-container>div{
+    width: auto;
+    height: 100px;
+    box-shadow: none;
+    opacity: 1;
+}
+
+#toast-container>div:hover{
+    box-shadow: none;
+}
+
+.toast-message{
+    font-size: 20px;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 25px;
+}
+
+.notification0 {
+    background-color: #2980B9;
+}
+
+.notification1 {
+    background-color: #F39C12;
+}
+
+.notification2 {
+    background-color: #D35400;
+}
+
+.notification3 {
+    background-color: #16A085;
+}
+
+.notification4{
+    background-color: #2C3E50;
+}
+
+.toast-error, .notification5{
+    background-color: #C0392B;
+}
+
+#toast-container>.toast-info{
+    background-image: none !important;
+}
+
+#toast-container>.toast-info:before{
+    content: "\f05a";
+    font-family: 'FontAwesome';
+    text-align: center;
+    font-size: 24px;
+    line-height: 21px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: none;
+    left: 8%;
+    right: auto;
+    top: 38%;
+    position: absolute;
+    color: #BDC3C7;
+}
+
+.todo-search .btn-group button:after{
+    content: none;
+}
+
+.todo-search .btn-group{
+    position: absolute;
+    right: 17%;
+}
+
+.todo .dropdown-menu li:last-child {
+    border-radius: 0 0 6px 6px;
+    padding-bottom: 0px;
+}
+
+.todo-content .btn-group.show .btn{
+    margin-top: -35px;
+}
+
+.todo-search p{
+    display: inline-block;
+}
+
+li .todo-name span{
+    width: 80px;
+    display: inline-block;
+    text-align: left;
+}
+
+li .todo-name span:first-child{
+    width: 40px;
+}
+
+li .todo-name span:nth-child(3),li .todo-name span:nth-child(4){
+    width: 60px;
+}
+
+li .todo-name span:last-child{
+    text-align: center;
+    font-weight: 900;
+}
+
+#flights li:first-child{
+    border-radius: 6px 6px 0px 0px;
+}
+
+.d-inline{
+    display: inline-block;
+}
+
+.form-group{
+    margin-bottom: 0px;
+}
+
+.form-group .form-control{
+    width: auto;
+}
+
+.todo.functions ul.list>li{
+    padding: 10px 25px;
+}
