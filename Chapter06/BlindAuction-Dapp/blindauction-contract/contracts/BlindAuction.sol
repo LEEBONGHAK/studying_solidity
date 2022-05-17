@@ -12,7 +12,7 @@ contract BlindAuction {
     // 상태는 수헤자에 의해 설정된다.
     enum Phase {
         Init,
-        Bindding,
+        Bidding,
         Reveal,
         Done
     }
@@ -64,7 +64,7 @@ contract BlindAuction {
 
         // 해당 이벤트 발생
         if (currentPhase == Phase.Reveal) emit RevealStarted();
-        if (currentPhase == Phase.Bindding) emit BiddingStarted();
+        if (currentPhase == Phase.Bidding) emit BiddingStarted();
     }
 
     // 블라인드 경매 함수
@@ -84,7 +84,7 @@ contract BlindAuction {
             bidToCheck.blindedBid == keccak256(abi.encodePacked(value, secret))
         ) {
             refund += bidToCheck.deposit;
-            if (bidToCheck.deposit >= value && placeBid(mag.sender, value)) {
+            if (bidToCheck.deposit >= value && placeBid(msg.sender, value)) {
                 refund -= value;
             }
         }
