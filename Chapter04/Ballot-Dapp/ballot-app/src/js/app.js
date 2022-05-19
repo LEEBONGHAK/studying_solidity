@@ -5,6 +5,7 @@ App = {
   url: 'http://127.0.0.1:7545',
   chairPerson:null,
   currentAccount:null,
+  
   init: function() {
     $.getJSON('../proposals.json', function(data) {
       var proposalsRow = $('#proposalsRow');
