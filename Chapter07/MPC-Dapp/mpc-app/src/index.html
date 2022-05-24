@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Channel </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/toastr.min.css" rel="stylesheet">
+    </head>  
+      <body>
+          <div class="col-lg-12 mb-3 mt-3 text-center"><h3>Micropayment channel for global cleaning<h3></div>
+          <hr>
+          <h6 class='text-center'>Channel: <span id="channel_balance"></span>, Organizer :  <span id="sender_balance"></span>,  Worker: <span id="receiver_balance"></span></h6>
+      <div class="timeline">
+        <div class="cloud left">
+          <div class="content alert-primary">
+              1. Micropayment channel deployed : organizer and worker hardcoded
+          </div>
+        </div>
+        <div class="cloud right">
+          <div class="content alert-success">
+           2. Collected cointainers of plastic verified
+          </div>          
+        </div>
+        <div class="cloud left">
+          <div class="content alert-success">
+              <div>
+                  <h6>3. Organizer (Sender)</h6>
+                  <div class="col-lg-10 mb-3">
+                    <label for="receiver">Worker address</label>
+                    <input type="text" class="form-control" id="receiver" placeholder="">
+                  </div>
+
+                  <div class="col-lg-10 mb-3">
+                    <label for="amount">Enter amount(cumulative)</label>
+                    <input type="number" class="form-control" id="amount" placeholder="1 container = 1 ETH">
+                  </div>
+
+                  <div class="col-auto my-1">
+                    <button type="submit" class="btn btn-light" id="sign">Send micropayment</button>
+                  </div>
+            </div> 
+          </div>
+        </div>
+        <div class="cloud right">
+          <div class="content alert-success" style="margin-top:-200px">
+              4. Signed messages          
+            <div id="allchecks">
+                
+            </div>
+          </div>
+        </div>
+        <div class="cloud left">
+          <div class="content alert-primary" style="margin-top:200px">
+              <div>
+                  <h6>5. Worker (Receiver)</h6>
+                  <div class="col-lg-10 mb-3">
+                    <label for="receiveramount">Enter amount(cumulative)</label>
+                    <input type="number" class="form-control" id="receiveramount" placeholder="1 container = 1 ETH">
+                  </div>
+
+                  <div class="col-lg-10 mb-3">
+                    <label for="signedMessage">Enter signed message</label>
+                    <input type="text" class="form-control" id="signedMessage" placeholder="Signed message">
+                  </div>  
+
+                  <div class="col-auto my-1">
+                    <button type="submit" class="btn btn-light" id="transfer">Claim payment</button>
+                  </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+      
+      </body>
+    <script  src="js/toastr.min.js"></script>
+    
+     <!-- For version web3 1.0.X -->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- For version web3 0.2.X -->
+    <!-- <script src="https://rawgit.com/ethereumjs/browser-builds/master/dist/ethereumjs-abi/ethereumjs-abi-0.6.5.js"></script>  -->
+    <!-- <script src="js/web3.min.js"></script> -->
+     <!-- <script src="js/truffle-contract.js"></script> -->
+     <!-- <script src="js/0.2.0.js"></script> -->
+
+</html>
