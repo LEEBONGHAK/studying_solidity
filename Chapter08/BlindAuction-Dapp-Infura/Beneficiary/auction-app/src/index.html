@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blind Bidding App</title>
+  <link href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans:400,400italic,300italic,300|Raleway:300,400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/toastr.min.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <div class="content">
+    <div class="container wow fadeInUp delay-03s">
+      <div class="row">      
+        <div class="logo text-center">
+		      <h2>ETH - Blind Auction</h2>
+          <h3>May the highest bidder win!</h3>
+        </div>
+      </div>
+      <div class="text-center" > <p><b>Current Account: </b><span id="current_account"></span>,  <b> Balance(ETH):</b> <span id='balance'> </span></p>
+
+      </div>
+      <div class="row" >
+       
+
+        <div class="col-lg-2 col-lg-offset-2 text-center" style="padding-top:25px">
+            <img src="images/item.jpeg" height="400px" width="280px" style="box-shadow: -1px -1px 4px 4px #2f2c13;">
+        </div>
+        
+        <div class="col-lg-6 col-lg-offset-2">
+          <div>
+             
+            <h2 class="subs-title text-center">Bid on this vintage painting!</h2>
+           
+            <div style="font-size:20px; text-align:center; display:block">
+              Current phase: <span id="phase-notification-text"></span>
+            </div>
+          <br>
+          <center>
+            <button type="submit" id="change-phase" class="btn btn-primary btn-control align-center">Advance phase</button>&nbsp;&nbsp;
+            <button type="submit" id="generate-winner" class="btn btn-primary btn-control align-center">Show winning bid</button>
+            <br> 
+            <br>
+          <b> Contract Address:</b> <span id='contractAddress'></span>
+          <div id="winner"></div>
+          <hr>
+          <div id="close">
+            <button type="submit" id="close-auction" class="btn btn-primary btn-control align-center">Close Auction</button>
+          </div>
+          </center> 
+                    
+        </div>
+          
+        </div>
+        <!-- <div class="col-lg-2">
+          <p><b>Current Account: </b><span id="current_account"></span></p> 
+          <p><b> Contract Address:</b> <span id='contractAddress'></span></p>
+          <p><b> Balance(wei):</b> <span id='balance'> </span> </p>
+        </div> -->
+      </div>
+
+		<br>
+
+
+    </div>
+    </div>
+  </div>
+  
+  <script src="js/dist/jquery.min.js"></script>
+  <script src="js/dist/bootstrap.min.js"></script>
+  <script src="js/dist/jquery.countdown.min.js"></script>
+  <script src="js/dist/wow.js"></script>
+  <script src="js/dist/custom.js"></script>
+  <script src="js/dist/bootstrap.min.js"></script>
+  <script src="js/dist/toastr.min.js"></script>
+  <script src="js/dist/web3.min.js"></script>
+  <script src="js/dist/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

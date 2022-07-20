@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certification</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <link href="css/custom.css" rel="stylesheet">
+
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="css/nivo-lightbox.css" rel="stylesheet" />
+    <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" /> -->
+  <link href="css/animate.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-lg-8" id="left">
+      <img id="logo" src="images/logo.png" />
+      <section id="intro" class="intro">
+        <div class="intro-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 slogan text-center">
+                <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+                  <h2>Blockchain-based certificate verification</h2>
+                  <p>
+                    Automatic credentialling for UB's certificate programs<br><br />To get a certificate, students must
+                    satisfy all requirements for the program
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="col-lg-4" id="right">
+      <form>
+        <h4>Data intensive computing certification
+        </h4>
+        <div class="form-group">
+          <label for="personNumber">Person #</label>
+          <input type="text" class="form-control" id="personNumber" aria-describedby="emailHelp"
+            placeholder="Enter person number">
+        </div>
+
+        <div class="form-group">
+          <div><button type="button" class="btn btn-primary" id="register">Register</button> (for the first time access)
+          </div>
+          </br>
+          <div><button type="button" class="btn btn-primary" id="login">Login</button> (for subsequent access)</div>
+
+        </div>
+      </form>
+      <div class="error">
+        <p id="message"></p>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="js/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
+<script src="js/app.js"></script>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "dcc-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "description": ""
+}

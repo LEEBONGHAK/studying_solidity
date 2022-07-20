@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cerification</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link href="css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/nivo-lightbox.css" rel="stylesheet" />
+    <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+    <link id="t-colors" href="color/default.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-lg-4">
+            <h4 class="mt-3 mb-3">List of courses</h4>
+            <ul class="course_list">
+                <li>PRE-REQUISITE courses
+                    <ul>
+                        <li>CSE 115<span id="115"></span></li>
+                        <li>CSE 116<span id="116"></span></li>
+                    </ul>
+                </li>
+                <li>DATA Intensive core courses
+                    <ul>
+                        <li>CSE 250<span id="250"></span></li>
+                        <li>CSE 486<span id="486"></span></li>
+                        <li>CSE 487<span id="487"></span></li>
+                    </ul>
+                </li>
+
+                <li>DOMAIN specific course (Any one)
+                    <ul>
+                        <li>CSE 368<span id="368"></span></li>
+                        <li>CSE 435<span id="435"></span></li>
+                        <li>CSE 455<span id="455"></span></li>
+                        <li>CSE 456<span id="456"></span></li>
+                        <li>CSE 460<span id="460"></span></li>
+                        <li>CSE 462<span id="462"></span></li>
+                        <li>CSE 463<span id="463"></span></li>
+                        <li>CSE 467<span id="467"></span></li>
+                        <li>CSE 469<span id="469"></span></li>
+                        <li>CSE 470<span id="470"></span></li>
+                        <li>CSE 474<span id="474"></span></li>
+                        <li>OTH 400<span id="400"></span></li>
+                    </ul>
+                </li>
+                <li>CAPSTONE project (Any one)
+                    <ul>
+                        <li>CSE 495<span id="495"></span></li>
+                        <li>CSE 496<span id="496"></span></li>
+                        <li>CSE 498<span id="498"></span></li>
+                        <li>CSE 499<span id="499"></span></li>
+                        <li>OTH 444<span id="444"></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-lg-3" id="course_form">
+            <div class="mt-3 mb-3">
+                <img src="images/crest.png" alt="" class="img-responsive" width="260" />
+            </div>
+            <h4 class="mb-3">Enter courses and grades</h4>
+            <form>
+                <div class="form-group ">
+
+                    <label for="course_type">Course type</label>
+                    <select class="form-control" id="course_type" onChange="changeType(this.value);">
+                        <option value="" disabled selected>Select</option>
+                        <option value="pre_req">Pre-requisite course</option>
+                        <option value="core">Core course</option>
+                        <option value="domain">Domain specific course</option>
+                        <option value="project">Capstone project</option>
+                    </select></div>
+                <div class="form-group ">
+                    <label for="course">Course</label>
+                    <select class="form-control" id="course" name="course">
+                        <option value="" disabled selected>Select</option>
+                    </select>
+                </div>
+
+                <div class="form-group ">
+
+                    <label for="course">Grade</label>
+                    <select class="form-control" id="grade">
+                        <option value=""> </option>
+                        <!-- <option value="remove"> Remove </option> -->
+                        <option value="400"> A </option>
+                        <option value="367"> A- </option>
+                        <option value="333"> B+ </option>
+                        <option value="300"> B </option>
+                        <option value="267"> B- </option>
+                        <option value="233"> C+ </option>
+                        <option value="200"> C </option>
+                        <option value="167"> C- </option>
+                        <option value="133"> D+ </option>
+                        <option value="100"> D </option>
+                        <option value="0">F</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" id="addCourse"> Submit</button>
+            </form>
+            <br>
+
+        </div>
+
+        <div class="col-lg-5 full-ht">
+            <div class="text-center">
+                <h4 class="mt-3 mb-3">Data Intensive Computing Certificate Eligibility</h4>
+                <!-- <button type="button" class="btn btn-lg btn-danger mt-3 mb-3 " id="destroy">Destroy contract</button> -->
+                <button type="button" class="btn btn-lg btn-success mt-3 mb-3" id="checkEligibility">Check
+                    Eligibility</button>
+            </div>
+
+            <div id="result" style="display:none">
+
+                <div class="features">
+                    <span id="pre-requisite-icon"></span>
+                    <h5>Pre-requisite course requirement</h5>
+                    <span id="pre-requisite-result">
+                    </span>
+                </div>
+
+                <div class="features">
+                    <span id="required-courses-icon"></span>
+                    <h5>Core course requirement</h5>
+                    <span id="required-result">
+                    </span>
+                </div>
+
+                <div class="features">
+                    <span id="domain-requirement-icon"></span>
+                    <h5>Domain specific course requirement</h5>
+                    <span id="domain-result">
+                    </span>
+                </div>
+                
+                <div class="features">
+                    <span id="project-requirement-icon"></span>
+                    <h5>Capstone project requirement</h5>
+                    <span id="project-result">
+                    </span>
+                </div>
+
+                <div class="features">
+                    <span id="gpa-requirement-icon"></span>
+                    <h5>GPA<span id="gpa-value"></span></h5>
+                    <span id="gpa-result">
+                    </span>
+                </div>
+
+            </div>
+            <div class="text-center" id="kill">
+                <!-- <button type="button" class="btn btn-lg btn-danger mt-3 mb-3 " id="destroy">Destroy contract</button> -->
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var coursesByType = {
+        pre_req: ["115", "116"],
+        core: ["250", "486", "487"],
+        domain: ["368", "400", "435", "455", "456", "460", "462", "463", "467", "469", "470", "474"],
+        project: ["444", "495", "496", "498", "499"]
+    }
+
+    function changeType(value) {
+        if (value.length == 0) document.getElementById("course").innerHTML = "<option></option>";
+        else {
+            var catOptions = "<option value='' disabled selected>Select</option>";
+            for (categoryId in coursesByType[value]) {
+                catOptions += "<option>" + coursesByType[value][categoryId] + "</option>";
+            }
+            document.getElementById("course").innerHTML = catOptions;
+        }
+    }
+</script>
+<script src="js/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
+<script src="js/app.js"></script>
+
+</html>
